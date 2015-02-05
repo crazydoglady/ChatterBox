@@ -1,0 +1,36 @@
+
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+}
+
+h2{
+  color: blue;
+  display: inline-block;
+}
+
+h3{
+  color: green;
+  display: inline-block;
+}
+
+aside {
+  width: 20%;
+  display: inline-block;
+}
+
+.chatbox {
+  background: grey;
+  width: 75%;
+  display: inline-block;
+}
+
+form{
+  background: firebrick;
+}

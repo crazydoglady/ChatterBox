@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>ChatterBox</title>
+  <script type="html/template" id="chatTmpl">
+    <h2> userId</h2>
+    <div class="form">
+      <input type="text" value="<%= message %>" >
+    </div>
+    <button class="sendMessage">Send</button>
+  </script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Chat In The Box</h1>
+  </header>
+<aside class="usersList">
+  <ul>
+    <li>activeUser</li>
+  </ul>
+</aside>
+
+<div class="chatbox">
+  <section>
+    <article>
+      <h2>userid</h2>
+      <h3>chat content goes here</h3>
+    </article>
+  </section>
+  <form action="">
+    <div class="userid">
+      userID goes here
+      <!-- user id will be attached to their new posts -->
+    </div>
+    <div class="message">
+      <input type="text" name="message" value="Type message here">
+    </div>
+    <button action="submit" name="send" value="send">Send</button>
+  </form>
+</div>
+
+</body>
+</html>
