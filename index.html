@@ -6,9 +6,7 @@
   <title>ChatterBox</title>
   <script type="html/template" id="chatTmpl">
     <article data-chatid="<%= _id %>">
-      <div class="form">
-        <h2> userId</h2>
-      </div>
+    <h2> userId</h2>
       <div class="form">
         <input type="text" value="<%= message %>" >
       </div>
@@ -27,13 +25,11 @@
 </aside>
 
 <div class="chatbox">
-  <section>
     <article>
       <h2>userid</h2>
       <h3>chat content goes here</h3>
     </article>
-  </section>
-  <form action="">
+  <form id = "create" action="">
     <div class="userid">
       userID goes here
       <!-- user id will be attached to their new posts -->
@@ -41,7 +37,7 @@
     <div class="message">
       <input type="text" name="message" value="Type message here">
     </div>
-    <button action="submit" name="send" value="send">Send</button>
+    <button action="submit" name="send">Send</button>
   </form>
 </div>
 <script src="bower_components/jquery/dist/jquery.js"></script>
