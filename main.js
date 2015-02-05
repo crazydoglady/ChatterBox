@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  chats.init();
+});//end doc ready
+
 var chats = {
   init: function() {
     chats.initStyling();
@@ -7,7 +11,7 @@ var chats = {
     chats.renderChat();
   },
   initEvents: function() { //on click of send msg button trigger these events
-    $('.sendMessage').on('submit', function(event){
+    $('#create').on('submit', function(event){
       event.preventDefault();
       var newMessage = {
         user: $(this).find('input[name = "userId"]').val(),
@@ -44,7 +48,7 @@ var chats = {
     });//end ajax for render
     //set timeout to auto refresh page
   },
-  createMessage: function() {
+  createMessage: function(message) {
     $.ajax({
       url: chats.config.url,
       data: message,
@@ -61,12 +65,3 @@ var chats = {
 
 
 };//end chats methods
-
-
-
-
-
-$(document).ready(function() {
-  chats.init();
-
-});//end doc ready
