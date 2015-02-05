@@ -5,14 +5,16 @@
   <link rel="stylesheet" href="styles.css">
   <title>ChatterBox</title>
   <script type="html/template" id="chatTmpl">
-    <h2> userId</h2>
-    <div class="form">
-      <input type="text" value="<%= message %>" >
-    </div>
-    <button class="sendMessage">Send</button>
+    <article data-chatid="<%= _id %>">
+      <div class="form">
+        <h2> userId</h2>
+      </div>
+      <div class="form">
+        <input type="text" value="<%= message %>" >
+      </div>
+      <button class="sendMessage">Send</button>
+    </article>
   </script>
-
-
 </head>
 <body>
   <header>
@@ -42,6 +44,8 @@
     <button action="submit" name="send" value="send">Send</button>
   </form>
 </div>
-
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
