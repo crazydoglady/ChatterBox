@@ -14,8 +14,8 @@ var chats = {
     $('#create').on('submit', function(event){
       event.preventDefault();
       var newMessage = {
-        user: $(this).find('input[name = "userId"]').val(),
-        message: $(this).find('input[name= "message"]').val()
+        userId: $(this).find('input[name="userId"]').val(),
+        message: $(this).find('input[name="message"]').val()
       };//end of newMessage variable
       chats.createMessage(newMessage);
 
@@ -40,7 +40,7 @@ var chats = {
           markup +=template(item);
         });//end forEach
         console.log('markup is....', markup);
-        $('section').html(markup);
+        $('article').html(markup);
       },
       error: function(err) {
         console.log(err);
