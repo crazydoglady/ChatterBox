@@ -25,3 +25,9 @@ aside {
 
 form {
   background: firebrick; }
+
+.userId {
+  display: none; }
+
+.show {
+  display: block; }

@@ -1,5 +1,7 @@
 $(document).ready(function() {
   chats.init();
+
+
 });//end doc ready
 
 var chats = {
@@ -10,11 +12,20 @@ var chats = {
   initStyling: function() {
     chats.renderChat();
   },
-  initEvents: function() { //on click of send msg button trigger these events
+  initEvents: function() {
+    $('.userId').on('submit', function(event){
+      event.preventDefault();
+      var input = $('#userInput').val();
+      localStorage.setItem('userId', input);
+      console.log(input);
+      $('.userId').removeClass('show');
+    });
+
+    //on click of send msg button trigger these events
     $('#create').on('submit', function(event){
       event.preventDefault();
       var newMessage = {
-        userId: $(this).find('input[name="userId"]').val(),
+        userId: "localStorage.getItem('userId')",
         message: $(this).find('input[name="message"]').val()
       };//end of newMessage variable
       chats.createMessage(newMessage);
