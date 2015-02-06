@@ -6,6 +6,9 @@
   <title>ChatterBox</title>
   <script type="html/template" id="chatTmpl">
     <article data-chatid="<%= _id %>">
+    <div>
+        <%= localStorage.getItem('userId') %>
+    </div>
       <div class="form">
         <input type="text" value="<%= message %>" >
       </div>

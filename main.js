@@ -63,6 +63,7 @@ var chats = {
     $.ajax({
       url: chats.config.url,
       data: message,
+      userName: "localStorage.getItem('userId')",
       type: 'POST', //request to add info to server and will appear when render function is run
     success: function(data) {
       console.log(data);
