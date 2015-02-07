@@ -5,19 +5,51 @@
   <link rel="stylesheet" href="styles.css">
   <title>ChatterBox</title>
   <script type="html/template" id="chatTmpl">
+<<<<<<< HEAD
   <article data-chatid="<%= _id %>">
   <h2><%= userId %></h2>
   <h3><%= message %></h3>
   </article>
+=======
+    <article data-chatid="<%= _id %>">
+    <h2><%= userId %></h2>
+    <h3><%= message %></h3>    
+    </article>
+
+>>>>>>> 5501d14f62c62db5280ae451b999f99e8d34f979
   </script>
 </head>
 <body>
   <header>
     <h1>Chat In The Box</h1>
   </header>
+<<<<<<< HEAD
   <form action="" class="userId show">
     <div class="createUser">
       <input type="text" id="userInput" placeholder="What's your name?">
+=======
+<form action="" class="userId show">
+  <div class="createUser">
+    <input type="text" id="userInput" placeholder="What's your name?">
+  </div>
+  <button action="submit">Create</button>
+</form>
+<aside class="usersList">
+  <ul>
+    <li>activeUser</li>
+  </ul>
+</aside>
+<div class="chatbox">
+    <article>
+
+    </article>
+  <form id = "create" action="">
+    <div>
+      <h2 name="userId"> </h2>
+    </div>
+    <div class="message">
+      <input type="text" name="message" placeholder="Type message here">
+>>>>>>> 5501d14f62c62db5280ae451b999f99e8d34f979
     </div>
     <button action="submit">Create</button>
   </form>

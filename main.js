@@ -3,9 +3,6 @@
 $(document).ready(function() {
   chats.init();
 
-  // to delete bad data uncomment out this line and put in correct id from server
-  //chatInTheBox.deleteMessage('54d639b0ddad9b0300000011');
-
 });//end doc ready
 
 var chats = {
@@ -44,6 +41,13 @@ var chats = {
     //   console.log(taskid);
     //   tasks.deleteTask(taskid);
     // });
+//   $('section').on('click', '.deleteMessage', function (event) {
+//   event.preventDefault();
+//   var taskid = $(this).closest('article').data('_id');
+//   console.log(taskid);
+//   tasks.deleteTask(taskid);
+// });
+
 
     // $('#logout').on('click', function(event){
     //   event.preventDefault();
@@ -98,6 +102,20 @@ var chats = {
   },
   deleteMessage: function(id) {
     $.ajax({
+
+    success: function(data) {
+      console.log(data);
+      chats.renderChat(); //reload chat if new data is received
+    },
+    error: function(err) {
+      console.log(err); //oops
+    }
+  });//end createMessage ajax
+
+
+},
+deleteMessage: function(id) {
+  $.ajax({
       url: tasks.config.url + '/' + id,
       type: 'DELETE', //D is for Delete in CRUD
       success: function (data) {
