@@ -2,9 +2,10 @@
 
 $(document).ready(function() {
   chats.init();
+  setInterval(chats.renderChat, 1000);
 
     // to delete bad data uncomment out this line and put in correct id from server
-   //chatInTheBox.deleteMessage('54d639b0ddad9b0300000011');
+   //chatInTheBox1.deleteMessage('54d639b0ddad9b0300000011');
 
 });//end doc ready
 
@@ -12,11 +13,13 @@ var chats = {
   init: function() {
     chats.initStyling();
     chats.initEvents();
+    setInterval();
   },
   initStyling: function() {
     chats.renderChat();
   },
   initEvents: function() {
+
     $('.userId').on('submit', function(event){
       event.preventDefault();
       var userName = $('#userInput').val();
@@ -32,7 +35,6 @@ var chats = {
         userId: localStorage.getItem( 'userId' ),
         message: $(this).find('input[name="message"]').val(),
       };//end of newMessage variable
-
 
       chats.createMessage(newMessage);
 
@@ -64,17 +66,15 @@ var chats = {
       url: chats.config.url,
       type: 'GET',
       success: function(chats) { //passes info through function and it is added into empty string
-        console.log(chats)
         var template= _.template($('#chatTmpl').html());
         var markup = "";
         chats.forEach(function(item, idx, arr){
           markup +=template(item);
         });//end forEach
-        console.log('markup is....', markup);
         $('article').html(markup);
       },
       error: function(err) {
-        console.log(err);
+        console.log(err, "render error");
       }
     });//end ajax for render
     //set timeout to auto refresh page
@@ -86,14 +86,12 @@ var chats = {
       data: message,
       type: 'POST', //request to add info to server and will appear when render function is run
     success: function(data) {
-      console.log(data);
       chats.renderChat(); //reload chat if new data is received
     },
     error: function(err) {
-      console.log(err); //oops
+      console.log(err , "createMessage error" ); //oops
     }
   });//end createMessage ajax
-
 
 },
 deleteMessage: function(id) {
@@ -101,11 +99,10 @@ deleteMessage: function(id) {
       url: tasks.config.url + '/' + id,
       type: 'DELETE', //D is for Delete in CRUD
       success: function (data) {
-        console.log(data);
         tasks.renderTasks();
       },
       error: function(err) {
-        console.log(err); //You DONE BAD!
+        console.log(err , "deleteMessage error"); //You DONE BAD!
       }
     }); //end ajax for delete
   },
