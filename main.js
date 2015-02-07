@@ -1,6 +1,10 @@
+
+
 $(document).ready(function() {
   chats.init();
 
+  // to delete bad data uncomment out this line and put in correct id from server
+  //chatInTheBox.deleteMessage('54d639b0ddad9b0300000011');
 
 });//end doc ready
 
@@ -15,9 +19,9 @@ var chats = {
   initEvents: function() {
     $('.userId').on('submit', function(event){
       event.preventDefault();
-      var input = $('#userInput').val();
-      localStorage.setItem('userId', input);
-      console.log(input);
+      var userName = $('#userInput').val();
+      localStorage.setItem( 'userId', userName);
+      console.log(userName);
       $('.userId').removeClass('show');
     });
 
@@ -25,15 +29,31 @@ var chats = {
     $('#create').on('submit', function(event){
       event.preventDefault();
       var newMessage = {
-        userId: "localStorage.getItem('userId')",
-        message: $(this).find('input[name="message"]').val()
+        userId: localStorage.getItem( 'userId' ),
+        message: $(this).find('input[name="message"]').val(),
       };//end of newMessage variable
+
+
       chats.createMessage(newMessage);
 
     });//end submit event for .sendMessage button
+
+    //   $('section').on('click', '.deleteMessage', function (event) {
+    //   event.preventDefault();
+    //   var taskid = $(this).closest('article').data('_id');
+    //   console.log(taskid);
+    //   tasks.deleteTask(taskid);
+    // });
+
+    // $('#logout').on('click', function(event){
+    //   event.preventDefault();
+    //   chats.clearChat();
+    //   localStorage.removeItem('userId');
+    //
+    // });
   },
   config: {
-    url:'http://tiy-fee-rest.herokuapp.com/collections/chatInTheBox',
+    url:'http://tiy-fee-rest.herokuapp.com/collections/chatInTheBox1',
   },
   render: function (data, tmpl, $el){ //declares what is passed into template
     var template= _.template(data, tmpl);
@@ -62,17 +82,33 @@ var chats = {
   createMessage: function(message) {
     $.ajax({
       url: chats.config.url,
+      userName: "userId",
       data: message,
       type: 'POST', //request to add info to server and will appear when render function is run
-    success: function(data) {
-      console.log(data);
-      chats.renderChat(); //reload chat if new data is received
-    },
-    error: function(err) {
-      console.log(err); //oops
-    }
-  });//end createMessage ajax
-  }
+      success: function(data) {
+        console.log(data);
+        chats.renderChat(); //reload chat if new data is received
+      },
+      error: function(err) {
+        console.log(err); //oops
+      }
+    });//end createMessage ajax
+
+
+  },
+  deleteMessage: function(id) {
+    $.ajax({
+      url: tasks.config.url + '/' + id,
+      type: 'DELETE', //D is for Delete in CRUD
+      success: function (data) {
+        console.log(data);
+        tasks.renderTasks();
+      },
+      error: function(err) {
+        console.log(err); //You DONE BAD!
+      }
+    }); //end ajax for delete
+  },
 
 
 };//end chats methods

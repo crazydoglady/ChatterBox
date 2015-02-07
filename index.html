@@ -6,9 +6,8 @@
   <title>ChatterBox</title>
   <script type="html/template" id="chatTmpl">
   <article data-chatid="<%= _id %>">
-  <div class="form">
-  <input type="text" value="<%= message %>" >
-  </div>
+  <h2><%= userId %></h2>
+  <h3><%= message %></h3>
   </article>
   </script>
 </head>
@@ -27,13 +26,14 @@
       <li>activeUser</li>
     </ul>
   </aside>
-
   <div class="chatbox">
     <article>
-      <h2></h2>
-      <h3></h3>
+
     </article>
     <form id = "create" action="">
+      <div>
+        <h2 name="userId"> </h2>
+      </div>
       <div class="message">
         <input type="text" name="message" placeholder="Type message here">
       </div>
