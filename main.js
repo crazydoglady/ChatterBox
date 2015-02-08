@@ -36,8 +36,7 @@ var chats = {
 
     $('.logout').on('submit', function(event){
       event.preventDefault();
-      localStorage.removeItem('userId')
-      chats.init();
+      chats.logOutUser();
     });//end of logout
 
   },
@@ -57,9 +56,9 @@ var chats = {
     } else {
       $('.chatbox').addClass('show');
       $('.create').addClass('show');
-      $('.userId').removeClass('show');
+      // $('.userId').removeClass('show');
       $('.logout').addClass('show');
-    };
+    }
     console.log( login);
     $.ajax({
       url: chats.config.url,
@@ -90,6 +89,13 @@ var chats = {
       console.log(err , "createMessage error" ); //oops
     }
   });//end createMessage ajax
+},
+logOutUser: function() {
+  localStorage.removeItem('userId');
+  console.log('logout success');
+
+  chats.renderChat();
+
 }
 // editName: function (id, name) {
 //   $.ajax({
