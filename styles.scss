@@ -114,6 +114,8 @@ aside {
   margin: 0 0 0 10%;
   background: white;
   width: 75%;
+  max-height: 500px;
+  overflow: scroll;
   display: none;
   box-shadow: 3px 3px 7px grey;
 }
