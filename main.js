@@ -19,7 +19,7 @@ var chats = {
       var userName = $('#userInput').val();
       localStorage.setItem( 'userId', userName);
       console.log(userName);
-      $('.userId').removeClass('show');
+      // $('.userId').removeClass('show');
     });//end submit userId
 
     //on click of send msg button trigger these events
@@ -34,11 +34,11 @@ var chats = {
 
     });//end submit event for .sendMessage button
 
-    // $('.logout').on('submit', function(event){
-    //   event.preventDefault();
-    //   localStorage.removeItem('userId')
-    //   chats.init();
-    // });//end of logout
+    $('.logout').on('submit', function(event){
+      event.preventDefault();
+      localStorage.removeItem('userId')
+      chats.init();
+    });//end of logout
 
   },
   config: {
@@ -49,17 +49,18 @@ var chats = {
     $el.append(template);
   },
   renderChat: function(){
-    // var login = localStorage.userId;
-    // if (login == null) {
-    //   $('.chatbox').removeClass('show');
-    //   $('.create').removeClass('show');
-    //   $('.logout').removeClass('show');
-    // } else {
-    //   $('.chatbox').addClass('show');
-    //   $('.create').addClass('show');
-    //   // $('.userId').removeClass('show');
-    // };
-    // console.log( login);
+    var login = localStorage.userId;
+    if (login == null) {
+      $('.chatbox').removeClass('show');
+      $('.create').removeClass('show');
+      $('.logout').removeClass('show');
+    } else {
+      $('.chatbox').addClass('show');
+      $('.create').addClass('show');
+      $('.userId').removeClass('show');
+      $('.logout').addClass('show');
+    };
+    console.log( login);
     $.ajax({
       url: chats.config.url,
       type: 'GET',
