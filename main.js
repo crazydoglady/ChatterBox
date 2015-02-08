@@ -8,7 +8,6 @@ var chats = {
   init: function() {
     chats.initStyling();
     chats.initEvents();
-    setInterval();
   },
   initStyling: function() {
     chats.renderChat();
@@ -65,16 +64,12 @@ var chats = {
       url: chats.config.url,
       type: 'GET',
       success: function(chats) { //passes info through function and it is added into empty string
-        console.log("success renderChat");
         var template= _.template($('#chatTmpl').html());
-        console.log("template success");
         var markup = "";
-        console.log("maybe?");
         chats.forEach(function(item, idx, arr){
           markup +=template(item);
         });//end forEach
         $('article').html(markup);
-        console.log("markup changed");
       },
       error: function(err) {
         console.log(err, "render error");
