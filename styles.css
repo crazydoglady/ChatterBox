@@ -22,12 +22,15 @@ aside {
 .chatbox {
   background: grey;
   width: 75%;
-  display: inline-block; }
+  display: none; }
 
 form {
   background: firebrick; }
 
 .userId {
+  display: none; }
+
+.logout {
   display: none; }
 
 .show {
