@@ -1,23 +1,95 @@
+$red: #e53d3d;
+$darkred: #B22222;
+$droid: 'Droid Serif', serif;
+
+
 body{
+  font-family: $droid;
   margin: 0;
   padding: 0;
+  background: black;
+}
+ul{
+  list-style-type: none;
+  li{
+    list-style-type: none;
+  }
+}
+header {
+  min-height: 150px;
+  background: black;
+  .box{
+    position: absolute;
+    h4 {
+      color: white;
+      text-align: left;
+      margin: 0 0 0 25px;
+      ul{
+      margin: 0;
+      height: 100px;
+      list-style-type: none;
+    }
+  }
+}
+}
+.chevron {
+  position: relative;
+  text-align: center;
+  padding: 12px;
+  margin: 30% 0 0 10%;
+  height: 75px;
+  width: 75px;
 }
 
+.chevron:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 51%;
+  background: $darkred;
+  -webkit-transform: skew(0deg, 35deg);
+  -moz-transform: skew(0deg, 35deg);
+  -ms-transform: skew(0deg, 35deg);
+  -o-transform: skew(0deg, 35deg);
+  transform: skew(0deg, 35deg);
+}
+.chevron:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: $red;
+  -webkit-transform: skew(0deg, -35deg);
+  -moz-transform: skew(0deg, -35deg);
+  -ms-transform: skew(0deg, -35deg);
+  -o-transform: skew(0deg, -35deg);
+  transform: skew(0deg, -35deg);
+}
+
+
 h1 {
-  color: red;
-  text-align: center;
+  font-family: $droid;
+  position: absolute;
+  color: white;
+  text-align: left;
+  margin: 6% 0 0 11%;
 }
 
 h2{
   height:16px;
-  color: blue;
+  color: grey;
   display: inline-block;
 }
 
 h3{
-  color: green;
+  color: black;
   display: inline-block;
 }
+
 
 aside {
   width: 20%;
@@ -25,18 +97,54 @@ aside {
 }
 
 .chatbox {
-  background: grey;
+  margin: 0 0 0 10%;
+  background: white;
   width: 75%;
   display: none;
+  box-shadow: 3px 3px 7px grey;
 }
 
 form{
-  background: firebrick;
+  background: $darkred;
+  width: 50%;
+  input{
+    display: inline-block;
+    width: 90%;
+    margin: 1% 0 1% 1%;
+  }
+}
+.logout {
+  font-size: 20px;
+  display: none;
+  button{
+    height: 100%;
+    color: black;
+    background: $red;
+    display: inline-block;
+  }
 }
 
 .userId {
   display: none;
 }
+
+#create {
+  margin: 0 0 2% 0;
+  input{
+    display: inline-block;
+  }
+  button {
+    margin: 0% 0 0% 2%;
+    display: inline-block;
+    background: $red;
+    color: black;
+  }
+}
+
+#userBox {
+  width: 50%;
+}
+
 
 
 .show {

@@ -16,10 +16,8 @@ var chats = {
   initEvents: function() {
     $('.userId').on('submit', function(event){
       event.preventDefault();
-      var userName = $('#userInput').val();
-      localStorage.setItem( 'userId', userName);
-      console.log(userName);
-      // $('.userId').removeClass('show');
+      $('.chatbox').html();
+      chats.createUser();
     });//end submit userId
 
     //on click of send msg button trigger these events
@@ -36,8 +34,8 @@ var chats = {
 
     $('.logout').on('submit', function(event){
       event.preventDefault();
-      chats.logOutUser();
-    });//end of logout
+      chats.logoutUser();
+    });//end of logout submit event
 
   },
   config: {
@@ -49,17 +47,20 @@ var chats = {
   },
   renderChat: function(){
     var login = localStorage.userId;
+    console.log(login);
     if (login == null) {
       $('.chatbox').removeClass('show');
       $('.create').removeClass('show');
       $('.logout').removeClass('show');
     } else {
+      $('#userDisplay').html(localStorage.userId);
       $('.chatbox').addClass('show');
       $('.create').addClass('show');
-      // $('.userId').removeClass('show');
+      $('.userId').removeClass('show');
       $('.logout').addClass('show');
+      $('form').css("width", "100%");
+      $('.userInput').css("margin-left", "10%");
     }
-    console.log( login);
     $.ajax({
       url: chats.config.url,
       type: 'GET',
@@ -90,11 +91,32 @@ var chats = {
     }
   });//end createMessage ajax
 },
-logOutUser: function() {
-  localStorage.removeItem('userId');
-  console.log('logout success');
+  createUser: function() {
+    var userName = $('#userInput').val();
+    localStorage.setItem( 'userId', userName);
+    console.log(userName);
+    // $.ajax({
+    //   url: chats.config.url,
+    //   type: 'GET',
+    //   success: function(chats) { //passes info through function and it is added into empty string
+    //     var template= _.template($('#userLogin').html());
+    //     var markup = "";
+    //     $('.logout').html(markup);
+    //   },
+    //   error: function(err) {
+    //     console.log(err, "render error");
+    //   }
+    // });//end ajax for render
+},
+  logoutUser: function() {
+    localStorage.removeItem('userId');
+    $('#userInput').val("");
+    $('.userId').addClass('show');
+    $('.userId').css("width", "50%");
+    $('.userId').css("margin-left", "10%");
+    console.log('logout success');
 
-  chats.renderChat();
+    chats.renderChat();
 
 }
 // editName: function (id, name) {

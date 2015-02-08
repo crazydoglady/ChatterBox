@@ -1,18 +1,78 @@
 body {
+  font-family: 'Droid Serif', serif;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background: black; }
+
+ul {
+  list-style-type: none; }
+  ul li {
+    list-style-type: none; }
+
+header {
+  min-height: 150px;
+  background: black; }
+  header .box {
+    position: absolute; }
+    header .box h4 {
+      color: white;
+      text-align: left;
+      margin: 0 0 0 25px; }
+      header .box h4 ul {
+        margin: 0;
+        height: 100px;
+        list-style-type: none; }
+
+.chevron {
+  position: relative;
+  text-align: center;
+  padding: 12px;
+  margin: 30% 0 0 10%;
+  height: 75px;
+  width: 75px; }
+
+.chevron:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 51%;
+  background: #B22222;
+  -webkit-transform: skew(0deg, 35deg);
+  -moz-transform: skew(0deg, 35deg);
+  -ms-transform: skew(0deg, 35deg);
+  -o-transform: skew(0deg, 35deg);
+  transform: skew(0deg, 35deg); }
+
+.chevron:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: #e53d3d;
+  -webkit-transform: skew(0deg, -35deg);
+  -moz-transform: skew(0deg, -35deg);
+  -ms-transform: skew(0deg, -35deg);
+  -o-transform: skew(0deg, -35deg);
+  transform: skew(0deg, -35deg); }
 
 h1 {
-  color: red;
-  text-align: center; }
+  font-family: 'Droid Serif', serif;
+  position: absolute;
+  color: white;
+  text-align: left;
+  margin: 6% 0 0 11%; }
 
 h2 {
   height: 16px;
-  color: blue;
+  color: grey;
   display: inline-block; }
 
 h3 {
-  color: green;
+  color: black;
   display: inline-block; }
 
 aside {
@@ -20,18 +80,44 @@ aside {
   display: inline-block; }
 
 .chatbox {
-  background: grey;
+  margin: 0 0 0 10%;
+  background: white;
   width: 75%;
-  display: none; }
+  display: none;
+  box-shadow: 3px 3px 7px grey; }
 
 form {
-  background: firebrick; }
+  background: #B22222;
+  width: 50%; }
+  form input {
+    display: inline-block;
+    width: 90%;
+    margin: 1% 0 1% 1%; }
+
+.logout {
+  font-size: 20px;
+  display: none; }
+  .logout button {
+    height: 100%;
+    color: black;
+    background: #e53d3d;
+    display: inline-block; }
 
 .userId {
   display: none; }
 
-.logout {
-  display: none; }
+#create {
+  margin: 0 0 2% 0; }
+  #create input {
+    display: inline-block; }
+  #create button {
+    margin: 0% 0 0% 2%;
+    display: inline-block;
+    background: #e53d3d;
+    color: black; }
+
+#userBox {
+  width: 50%; }
 
 .show {
   display: block; }

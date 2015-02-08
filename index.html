@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="styles.css">
-  <title>ChatterBox</title>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700italic' rel='stylesheet' type='text/css'>  <link rel="stylesheet" href="styles.css">
+  <title>Chat in the Box</title>
   <script type="html/template" id="chatTmpl">
     <article data-chatid="<%= _id %>">
     <h2><%= userId %></h2>
@@ -13,9 +13,14 @@
 </head>
 <body>
   <header>
+    <div class="box">
+    <ul>
+      <li class="chevron">
+    </li>
+  </div>
     <h1>Chat In The Box</h1>
   </header>
-<form action="" class="userId show">
+<form action="" class="userId show" id="userBox">
   <div class="createUser">
     <input type="text" id="userInput" placeholder="What's your name?">
   </div>
@@ -23,23 +28,22 @@
 </form>
 <aside class="usersList">
   <ul>
-    <li>activeUser</li>
+    <li></li>
   </ul>
 </aside>
+</form>
 <div class="chatbox show">
+  <form action="" class="logout show">
+    <div id="userDisplay"></div>
+    <button action="submit">LOGOUT</button>
+  </form>
     <article>
     </article>
   <form id = "create" action="">
-    <div>
-      <h2 name="userId"> </h2>
-    </div>
     <div class="message">
       <input type="text" name="message" placeholder="Type message here">
-    </div>
     <button action="submit" name="send">Send</button>
-  </form>
-  <form action="" class="logout show">
-    <button action="submit">LOGOUT</button>
+  </div>
   </form>
 </div>
 
