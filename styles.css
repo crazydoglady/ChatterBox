@@ -4,15 +4,29 @@ body {
   padding: 0;
   background: black; }
 
+.wrapper {
+  width: 75%;
+  margin: 0 0 0 5%; }
+
+aside {
+  width: 25%;
+  color: white;
+  float: left;
+  display: none; }
+
 ul {
-  list-style-type: none; }
+  list-style-type: none;
+  width: 100%; }
   ul li {
     list-style-type: none; }
 
 header {
+  margin-top: 10%;
   min-height: 150px;
   background: black; }
   header .box {
+    width: 100%;
+    margin: 0 0 0 0;
     position: absolute; }
     header .box h4 {
       color: white;
@@ -26,8 +40,8 @@ header {
 .chevron {
   position: relative;
   text-align: center;
-  padding: 12px;
-  margin: 30% 0 0 10%;
+  margin: 0 0 0 30%;
+  display: inline-block;
   height: 75px;
   width: 75px; }
 
@@ -64,7 +78,7 @@ h1 {
   position: absolute;
   color: white;
   text-align: left;
-  margin: 6% 0 0 11%; }
+  margin: 1% 0 0 24%; }
 
 h2 {
   height: 16px;
@@ -88,7 +102,7 @@ aside {
 
 form {
   background: #B22222;
-  width: 50%; }
+  width: 100%; }
   form input {
     display: inline-block;
     width: 90%;
@@ -116,8 +130,5 @@ form {
     background: #e53d3d;
     color: black; }
 
-#userBox {
-  width: 50%; }
-
 .show {
-  display: block; }
+  display: inline-block; }

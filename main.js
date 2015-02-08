@@ -58,8 +58,7 @@ var chats = {
       $('.create').addClass('show');
       $('.userId').removeClass('show');
       $('.logout').addClass('show');
-      $('form').css("width", "100%");
-      $('.userInput').css("margin-left", "10%");
+      $('.usersList').addClass('show');
     }
     $.ajax({
       url: chats.config.url,
@@ -112,8 +111,6 @@ var chats = {
     localStorage.removeItem('userId');
     $('#userInput').val("");
     $('.userId').addClass('show');
-    $('.userId').css("width", "50%");
-    $('.userId').css("margin-left", "10%");
     console.log('logout success');
 
     chats.renderChat();
