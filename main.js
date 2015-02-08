@@ -18,30 +18,28 @@ var chats = {
     $('.userId').on('submit', function(event){
       event.preventDefault();
       var userName = $('#userInput').val();
-    localStorage.setItem( 'userId', userName);
+      localStorage.setItem( 'userId', userName);
       console.log(userName);
-
+      $('.userId').removeClass('show');
     });//end submit userId
 
     //on click of send msg button trigger these events
     $('#create').on('submit', function(event){
-      event.preventDefault();
-      var newMessage = {
-        userId: localStorage.getItem( 'userId' ),
-        message: $(this).find('input[name="message"]').val(),
-      };//end of newMessage variable
+        event.preventDefault();
+        var newMessage = {
+          userId: localStorage.getItem( 'userId' ),
+          message: $(this).find('input[name="message"]').val(),
+          };//end of newMessage variable
 
-      chats.createMessage(newMessage);
+          chats.createMessage(newMessage);
 
     });//end submit event for .sendMessage button
 
-    $('.logout').on('submit', function(event){
-      event.preventDefault();
-      console.log("logoutish1");
-      localStorage.removeItem('userId')
-      console.log("logoutish2");
-      chats.renderChat();
-    });//end of logout
+    // $('.logout').on('submit', function(event){
+    //   event.preventDefault();
+    //   localStorage.removeItem('userId')
+    //   chats.init();
+    // });//end of logout
 
   },
   config: {
@@ -52,28 +50,31 @@ var chats = {
     $el.append(template);
   },
   renderChat: function(){
-    var login = localStorage.userId;
-    if (login == null) {
-      $('.chatbox').removeClass('show');
-      $('.create').removeClass('show');
-      $('.logout').removeClass('show');
-    } else {
-      $('.chatbox').addClass('show');
-      $('.create').addClass('show');
-      $('.userId').removeClass('show');
-
-    }
-    console.log( login);
+    // var login = localStorage.userId;
+    // if (login == null) {
+    //   $('.chatbox').removeClass('show');
+    //   $('.create').removeClass('show');
+    //   $('.logout').removeClass('show');
+    // } else {
+    //   $('.chatbox').addClass('show');
+    //   $('.create').addClass('show');
+    //   // $('.userId').removeClass('show');
+    // };
+    // console.log( login);
     $.ajax({
       url: chats.config.url,
       type: 'GET',
       success: function(chats) { //passes info through function and it is added into empty string
+        console.log("success renderChat");
         var template= _.template($('#chatTmpl').html());
+        console.log("template success");
         var markup = "";
+        console.log("maybe?");
         chats.forEach(function(item, idx, arr){
           markup +=template(item);
         });//end forEach
         $('article').html(markup);
+        console.log("markup changed");
       },
       error: function(err) {
         console.log(err, "render error");
@@ -93,22 +94,21 @@ var chats = {
       console.log(err , "createMessage error" ); //oops
     }
   });//end createMessage ajax
-
-},
-editName: function (id, name) {
-  $.ajax({
-    userName: userId,
-    data: message,
-    type: 'PUT',
-    success: function() {
-
-  },
-    error: function(err){
-
-    }
-  });
-
 }
+// editName: function (id, name) {
+//   $.ajax({
+//     userName: userId,
+//     data: message,
+//     type: 'PUT',
+//     success: function() {
+//
+//   },
+//     error: function(err){
+//
+//     }
+//   });
+//
+// }
 
 
 };//end chats methods
