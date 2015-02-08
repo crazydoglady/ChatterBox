@@ -29,8 +29,23 @@ var chats = {
           };//end of newMessage variable
 
           chats.createMessage(newMessage);
-
     });//end submit event for .sendMessage button
+
+    // $('.editUser').on('click', function(event){
+    //   event.preventDefault();
+    //   $('.userEdit').addClass('show');
+    //   $(this).find('.userDisplay').toggleClass('show');
+    // });
+    //
+    //
+    // $('').on('submit', '#showUserEdit', function(event){
+    //   event.preventDefault();
+    //   var user = localStorage.userId;
+    //   var editedUser = {};
+    //
+    //   chats.editUser();
+    //
+    // });//end edit user event
 
     $('.logout').on('submit', function(event){
       event.preventDefault();
@@ -53,7 +68,7 @@ var chats = {
       $('.create').removeClass('show');
       $('.logout').removeClass('show');
     } else {
-      $('#userDisplay').html(localStorage.userId);
+      $('.userDisplay').html(localStorage.userId);
       $('.chatbox').addClass('show');
       $('.create').addClass('show');
       $('.userId').removeClass('show');
@@ -94,19 +109,8 @@ var chats = {
     var userName = $('#userInput').val();
     localStorage.setItem( 'userId', userName);
     console.log(userName);
-    // $.ajax({
-    //   url: chats.config.url,
-    //   type: 'GET',
-    //   success: function(chats) { //passes info through function and it is added into empty string
-    //     var template= _.template($('#userLogin').html());
-    //     var markup = "";
-    //     $('.logout').html(markup);
-    //   },
-    //   error: function(err) {
-    //     console.log(err, "render error");
-    //   }
-    // });//end ajax for render
 },
+
   logoutUser: function() {
     localStorage.removeItem('userId');
     $('#userInput').val("");
@@ -116,13 +120,14 @@ var chats = {
     chats.renderChat();
 
 }
-// editName: function (id, name) {
+// editUser: function (id, name) {
 //   $.ajax({
 //     userName: userId,
 //     data: message,
 //     type: 'PUT',
-//     success: function() {
-//
+//     success: function(newId) {
+//      console.log(newId);
+//      chats.renderChat();
 //   },
 //     error: function(err){
 //
