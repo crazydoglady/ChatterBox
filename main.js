@@ -20,15 +20,21 @@ var chats = {
       chats.createUser();
     });//end submit userId
 
+    $('.editUser').on('submit', function(event){
+      event.preventDefault();
+      $('.chatbox').html();
+      chats.editUser();
+    });//end submit userId
+
     //on click of send msg button trigger these events
     $('#create').on('submit', function(event){
-        event.preventDefault();
-        var newMessage = {
-          userId: localStorage.getItem( 'userId' ),
-          message: $(this).find('input[name="message"]').val(),
-          };//end of newMessage variable
+      event.preventDefault();
+      var newMessage = {
+        userId: localStorage.getItem( 'userId' ),
+        message: $(this).find('input[name="message"]').val(),
+      };//end of newMessage variable
 
-          chats.createMessage(newMessage);
+      chats.createMessage(newMessage);
 
     });//end submit event for .sendMessage button
 
@@ -39,12 +45,12 @@ var chats = {
 
   },
   config: {
-    url:'http://tiy-fee-rest.herokuapp.com/collections/chatInTheBox1',
+    url:'http://tiy-fee-rest.herokuapp.com/collections/chatInTheBox2',
   },
-  render: function (data, tmpl, $el){ //declares what is passed into template
-    var template= _.template(data, tmpl);
-    $el.append(template);
-  },
+  // render: function (data, tmpl, $el){ //declares what is passed into template
+  //   var template= _.template(data, tmpl);
+  //   $el.prepend(template);
+  // },
   renderChat: function(){
     var login = localStorage.userId;
     console.log(login);
@@ -52,11 +58,13 @@ var chats = {
       $('.chatbox').removeClass('show');
       $('.create').removeClass('show');
       $('.logout').removeClass('show');
+      $('.editUser').hide();
     } else {
       $('#userDisplay').html(localStorage.userId);
       $('.chatbox').addClass('show');
       $('.create').addClass('show');
-      $('.userId').removeClass('show');
+      $('.userId').hide();
+      $('.editUser').show();
       $('.logout').addClass('show');
       $('.usersList').addClass('show');
     }
@@ -82,14 +90,15 @@ var chats = {
       userName: "userId",
       data: message,
       type: 'POST', //request to add info to server and will appear when render function is run
-    success: function(data) {
-      chats.renderChat(); //reload chat if new data is received
-    },
-    error: function(err) {
-      console.log(err , "createMessage error" ); //oops
-    }
-  });//end createMessage ajax
-},
+      success: function(data) {
+        chats.renderChat(); //reload chat if new data is received
+      },
+      error: function(err) {
+        console.log(err , "createMessage error" ); //oops
+      }
+    });//end createMessage ajax
+  },
+
   createUser: function() {
     var userName = $('#userInput').val();
     localStorage.setItem( 'userId', userName);
@@ -106,7 +115,14 @@ var chats = {
     //     console.log(err, "render error");
     //   }
     // });//end ajax for render
-},
+  },
+
+  editUser: function(userId) {
+    var userEdit = $('#edituserInput').val();
+    localStorage.setItem('userId', userEdit);
+    console.log(userEdit);
+  },
+
   logoutUser: function() {
     localStorage.removeItem('userId');
     $('#userInput').val("");
@@ -115,21 +131,21 @@ var chats = {
 
     chats.renderChat();
 
-}
-// editName: function (id, name) {
-//   $.ajax({
-//     userName: userId,
-//     data: message,
-//     type: 'PUT',
-//     success: function() {
-//
-//   },
-//     error: function(err){
-//
-//     }
-//   });
-//
-// }
+  }
+  // editName: function (id, name) {
+  //   $.ajax({
+  //     userName: userId,
+  //     data: message,
+  //     type: 'PUT',
+  //     success: function() {
+  //
+  //   },
+  //     error: function(err){
+  //
+  //     }
+  //   });
+  //
+  // }
 
 
 };//end chats methods

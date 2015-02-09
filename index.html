@@ -6,54 +6,59 @@
   <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700italic' rel='stylesheet' type='text/css'>  <link rel="stylesheet" href="styles.css">
   <title>Chat in the Box</title>
   <script type="html/template" id="chatTmpl">
-    <article data-chatid="<%= _id %>">
-    <h2><%= userId %></h2>
-    <h3><%= message %></h3>
-    </article>
+  <article data-chatid="<%= _id %>">
+  <h2><%= userId %></h2>
+  <h3><%= message %></h3>
+  </article>
   </script>
 </head>
 <body>
   <div class="wrapper">
-  <header>
-    <div class="box">
-    <ul>
-      <li class="chevron">
-    </li>
-    <h1>Chat In The Box</h1>
-  </div>
-  </header>
-<form action="" class="userId show" id="userBox">
-  <div class="createUser">
-    <input type="text" id="userInput" placeholder="What's your name?">
-  </div>
-  <button action="submit">Create</button>
-</form>
-<aside class="usersList">
-  <ul>
-    <li></li>
-  </ul>
-</aside>
-</form>
-<div class="chatbox show">
-  <form action="" class="logout show">
-    <div id="userDisplay"></div>
-    <button action="submit"><i class="fa fa-times"></i> LOGOUT </button>
-  </form>
-    <article>
-    </article>
-  <form id = "create" action="">
-    <div class="message">
-      <input type="text" name="message" placeholder="Type message here">
-    <button action="submit" name="send">Send</button>
-  </div>
-  </form>
-</div>
+    <header>
+      <div class="box">
+        <ul>
+          <li class="chevron">
+          </li>
+          <h1>Chat In The Box</h1>
+        </div>
+      </header>
+      <form action="" class="userId show" id="userBox">
+        <div class="createUser">
+          <input type="text" id="userInput" placeholder="What's your name?">
+        </div>
+        <button action="submit">Create</button>
+      </form>
+      <form action="" class="editUser">
+        <input type="text" id="edituserInput" placeholder="What's your new Username?">
+        <button action="submit">Edit Username</button>
+      </form>
 
-</div><!--end wrapper-->
+      <aside class="usersList">
+        <ul>
+          <li></li>
+        </ul>
+      </aside>
+
+    <div class="chatbox show">
+      <form action="" class="logout show">
+        <div id="userDisplay"></div>
+        <button action="submit"><i class="fa fa-times"></i> LOGOUT </button>
+      </form>
+      <article>
+      </article>
+      <form id = "create" action="">
+        <div class="message">
+          <input type="text" name="message" placeholder="Type message here">
+          <button action="submit" name="send">Send</button>
+        </div>
+      </form>
+    </div>
+
+  </div><!--end wrapper-->
 
 
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/underscore/underscore.js"></script>
-<script src="main.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
