@@ -5,76 +5,63 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700italic' rel='stylesheet' type='text/css'>  <link rel="stylesheet" href="styles.css">
   <title>Chat in the Box</title>
-  <script type="html/template" id="chatTmpl">
-    <article data-chatid="<%= _id %>" data-userid="<%= userId %>">
-    <h2> <%=userId %> </h2>
-    <h3><%= message %></h3>
-    <button class="deleteMsg"><i class="fa fa-minus"></i></button>
-    </article>
-  </script>
+
+      <script type="html/template" id="chatTmpl">
+        <article data-chatid="<%= _id %>" data-userid="<%= userId %>">
+        <h2> <%=userId %> </h2>
+        <h3><%= message %></h3>
+        <button class="deleteMsg"><i class="fa fa-times"></i></button>
+        </article>
+      </script>
 </head>
+
 <body>
-  <div class="wrapper">
-  <header>
-    <div class="box"><ul><li class="chevron"></li><h1>Chat In The Box</h1></ul></div>
-  </header>
-<form action="" class="userId show" id="userBox">
-  <div class="createUser">
-    <input type="text" id="userInput" placeholder="What's your name?">
-  </div>
-  <button action="submit">Create</button>
-</form>
-<form action="" class="editUser">
-  <input type="text" id="edituserInput" placeholder="What's your new Username?">
-  <button action="submit">Edit Username</button>
-</form>
-<aside class="usersList">
-  <ul>
-    <li></li>
-  </ul>
-</aside>
-</form>
-<form action="" class="logout show">
-  <div class="userDisplay"></div>
-  <button action="" class="editUser"><i class="fa fa-pencil"></i>Edit User Name</button>
-  <button action="submit"><i class="fa fa-times"></i> LOGOUT </button>
-</form>
-<div class="chatbox show">
-    <article>
-    </article>
-  </div>
-  </form>
-  <form id ="create" action="">
-    <div class="sendMessage show">
-      <input type="text" name="message" placeholder="Type message here">
-      <button action="submit" name="send">Send</button>
-    </div>
-      <aside class="usersList">
-        <ul>
-          <li></li>
-        </ul>
-      </aside>
 
-<!--     <div class="chatbox show">
-  <form action="" class="logout show">
-    <div id="userDisplay"></div>
-    <button action="submit"><i class="fa fa-times"></i> LOGOUT </button>
-  </form>
-  <article>
-  </article>
-  <form id = "create" action="">
-    <div class="message">
-      <input type="text" name="message" placeholder="Type message here">
-      <button action="submit" name="send">Send</button>
-    </div>
-  </form>
-</div> -->
+<div class="wrapper">
+      <header>
+        <div class="box"><ul><li class="chevron"></li><h1>Chat In The Box</h1></ul></div>
+      </header>
+<!--form to create user-->
+    <form action="" class="userId show">
+      <div class="createUser">
+        <input type="text" id="userInput" placeholder="What's your name?">
+      </div>
+      <button action="submit"><i class="fa fa-pencil"></i>Login</button>
+    </form>
 
-  </div><!--end wrapper-->
+<!--form to edit user-->
+    <form action="" class="changeUser">
+      <input type="text" id="edituserInput" placeholder="What's your new Username?">
+      <button action="submit">CHANGE NAME</button>
+    </form>
+
+<!--user display and logout buttons -->
+  <div class="userInfo">
+    <button action="" class="userDisplay show">Change Name</button>
+  </div>
+    <form action="" class="logout show">
+      <button action="submit"><i class="fa fa-sign-out"></i> LOGOUT </button>
+    </form>
+
+<!--actual chat will be displayed within this div-->
+    <div class="chatbox show">
+        <article>
+        </article>
+    </div>
+
+<!--form for user to submit message to chatbox-->
+    <form id ="create" action="">
+      <div class="sendMessage show">
+        <input type="text" name="message" placeholder="Type message here">
+        <button action="submit" name="send">Send</button>
+      </div>
+    </form>
+</div> <!--end wrapper-->
 
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
   <script src="main.js"></script>
+
 </body>
 </html>

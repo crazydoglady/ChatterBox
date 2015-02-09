@@ -117,7 +117,6 @@ aside {
   max-height: 500px;
   overflow: scroll;
   display: none;
-  box-shadow: 3px 3px 7px grey;
 }
 
 form{
@@ -128,6 +127,10 @@ form{
     width: 90%;
     margin: 1% 0 1% 1%;
   }
+}
+
+.changeUser {
+  display: none;
 }
 .sendMessage{
   display: none;
@@ -142,10 +145,14 @@ form{
     display: inline-block;
   }
 }
-
-/* .userId {
+.userDisplay{
+  font-family: $droid;
+  font-size: 20px;
   display: none;
-} */
+}
+.userId {
+  display: none;
+}
 
 #create {
   margin: 0 0 2% 0;
@@ -160,7 +167,7 @@ form{
   }
 }
 
-i {
+  i {
   float: right;
   color: black;
   margin: 0 0 5px 0;

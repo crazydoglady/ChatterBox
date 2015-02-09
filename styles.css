@@ -99,8 +99,7 @@ aside {
   width: 100%;
   max-height: 500px;
   overflow: scroll;
-  display: none;
-  box-shadow: 3px 3px 7px grey; }
+  display: none; }
 
 form {
   background: #B22222;
@@ -109,6 +108,9 @@ form {
     display: inline-block;
     width: 90%;
     margin: 1% 0 1% 1%; }
+
+.changeUser {
+  display: none; }
 
 .sendMessage {
   display: none; }
@@ -122,9 +124,14 @@ form {
     background: #e53d3d;
     display: inline-block; }
 
-/* .userId {
-  display: none;
-} */
+.userDisplay {
+  font-family: 'Droid Serif', serif;
+  font-size: 20px;
+  display: none; }
+
+.userId {
+  display: none; }
+
 #create {
   margin: 0 0 2% 0; }
   #create input {

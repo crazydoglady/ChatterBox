@@ -20,9 +20,10 @@ var chats = {
       chats.createUser();
     });//end submit userId
 
-    $('.editUser').on('submit', function(event){
+    $('.userDisplay').on('click', function(event){
       event.preventDefault();
-      $('.chatbox').html();
+      $('.changeUser').addClass('show');
+      // $('.chatbox').html(); //this clears html content....why added?
       chats.editUser();
     });//end submit userId
 
@@ -33,7 +34,6 @@ var chats = {
         userId: localStorage.getItem( 'userId' ),
         message: $(this).find('input[name="message"]').val(),
       };//end of newMessage variable
-
       chats.createMessage(newMessage);
 
     });//end submit event for .sendMessage button
@@ -84,11 +84,13 @@ var chats = {
       $('.logout').removeClass('show');
       $('.sendMessage').removeClass('show');
       $('.editUser').hide();
+      $('.userDisplay').removeClass('show');
     } else {
+      $('.userDisplay').addClass('show');
       $('.userDisplay').html(localStorage.userId);
       $('.chatbox').addClass('show');
       $('.create').addClass('show');
-      $('.userId').hide();
+      $('.userId').removeClass('show');
       $('.editUser').show();
       $('.logout').addClass('show');
       $('.usersList').addClass('show');
@@ -117,12 +119,14 @@ var chats = {
       data: message,
       type: 'POST', //request to add info to server and will appear when render function is run
       success: function(data) {
+        ('#create').val("");
         chats.renderChat(); //reload chat if new data is received
       },
       error: function(err) {
         console.log(err , "createMessage error" ); //oops
       }
     });//end createMessage ajax
+
   },
 
   createUser: function() {
@@ -140,6 +144,7 @@ var chats = {
   logoutUser: function() {
     localStorage.removeItem('userId');
     $('#userInput').val("");
+    $('.userDisplay').removeClass('show').val("");
     $('.userId').addClass('show');
     // $('.message').removeClass('show');
     console.log('logout success');
