@@ -170,6 +170,7 @@ deleteMessage: function (id, user) {
       type: 'DELETE',
       success: function (data) {
        console.log(data);
+
        chats.renderChat();
       },
       error: function (err) {
