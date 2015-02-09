@@ -6,10 +6,10 @@
   <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700italic' rel='stylesheet' type='text/css'>  <link rel="stylesheet" href="styles.css">
   <title>Chat in the Box</title>
   <script type="html/template" id="chatTmpl">
-    <article data-chatid="<%= _id %>">
-    <h2><%= userId %></h2>
+    <article data-chatid="<%= _id %>" data-userid="<%= userId %>">
+    <h2> <%=userId %> </h2>
     <h3><%= message %></h3>
-    <i class="fa fa-minus"></i>
+    <button class="deleteMsg"><i class="fa fa-minus"></i></button>
     </article>
   </script>
 </head>

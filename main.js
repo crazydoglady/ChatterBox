@@ -53,8 +53,13 @@ var chats = {
     //   chats.editUser();
     //
     // });//end edit user event
-    $('.fa .fa-minus').on('click', function(event){
-      chats.deleteMessage();
+    $('article').on('click', '.deleteMsg', function(event){
+      event.preventDefault();
+      var msgId = $(this).closest('article').data('chatid');
+      var currentUser = $(this).closest('article').data('userid');
+      console.log(currentUser);
+      console.log(msgId);
+      chats.deleteMessage(msgId, currentUser);
     });//end of delete click event
 
     $('.logout').on('submit', function(event){
@@ -156,9 +161,10 @@ var chats = {
 //   });
 //
 // }
-deleteMessage: function (id) {
-  var currentUser = $(this).closest('h2').val()
-  if ( currentUser === localStorage.userId ) {
+deleteMessage: function (id, user) {
+  console.log(user, "currentUser");
+  console.log(localStorage.userId ,"localStorage.userId");
+  if ( user === localStorage.userId ) {
     $.ajax({
       url: chats.config.url + '/' + id,
       type: 'DELETE',
