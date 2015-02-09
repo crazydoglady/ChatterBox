@@ -9,6 +9,7 @@
     <article data-chatid="<%= _id %>">
     <h2><%= userId %></h2>
     <h3><%= message %></h3>
+    <i class="fa fa-minus"></i>
     </article>
   </script>
 </head>
@@ -29,21 +30,21 @@
   </ul>
 </aside>
 </form>
+<form action="" class="logout show">
+  <div class="userDisplay"></div>
+  <button action="" class="editUser"><i class="fa fa-pencil"></i>Edit User Name</button>
+  <button action="submit"><i class="fa fa-times"></i> LOGOUT </button>
+</form>
 <div class="chatbox show">
-  <form action="" class="logout show">
-    <div class="userDisplay"></div>
-    <button action="" class="editUser"><i class="fa fa-pencil"></i>Edit User Name</button>
-    <button action="submit"><i class="fa fa-times"></i> LOGOUT </button>
-  </form>
     <article>
     </article>
   </div>
   </form>
-  <form id = "create" action="">
-    <div class="message">
+  <form id ="create" action="">
+    <div class="sendMessage show">
       <input type="text" name="message" placeholder="Type message here">
-    <button action="submit" name="send">Send</button>
-</div>
+      <button action="submit" name="send">Send</button>
+    </div>
 
 </div><!--end wrapper-->
 

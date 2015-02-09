@@ -46,6 +46,9 @@ var chats = {
     //   chats.editUser();
     //
     // });//end edit user event
+    $('.fa .fa-minus').on('click', function(event){
+      chats.deleteMessage();
+    });//end of delete click event
 
     $('.logout').on('submit', function(event){
       event.preventDefault();
@@ -54,7 +57,7 @@ var chats = {
 
   },
   config: {
-    url:'http://tiy-fee-rest.herokuapp.com/collections/chatInTheBox1',
+    url:'http://tiy-fee-rest.herokuapp.com/collections/chatInTheBox2',
   },
   render: function (data, tmpl, $el){ //declares what is passed into template
     var template= _.template(data, tmpl);
@@ -67,6 +70,7 @@ var chats = {
       $('.chatbox').removeClass('show');
       $('.create').removeClass('show');
       $('.logout').removeClass('show');
+      $('.sendMessage').removeClass('show');
     } else {
       $('.userDisplay').html(localStorage.userId);
       $('.chatbox').addClass('show');
@@ -74,6 +78,7 @@ var chats = {
       $('.userId').removeClass('show');
       $('.logout').addClass('show');
       $('.usersList').addClass('show');
+      $('.sendMessage').addClass('show');
     }
     $.ajax({
       url: chats.config.url,
@@ -115,11 +120,11 @@ var chats = {
     localStorage.removeItem('userId');
     $('#userInput').val("");
     $('.userId').addClass('show');
+    // $('.message').removeClass('show');
     console.log('logout success');
 
     chats.renderChat();
-
-}
+},
 // editUser: function (id, name) {
 //   $.ajax({
 //     userName: userId,
@@ -135,6 +140,24 @@ var chats = {
 //   });
 //
 // }
-
+deleteMessage: function (id) {
+  var currentUser = $(this).closest('h2').val()
+  if ( currentUser === localStorage.userId ) {
+    $.ajax({
+      url: chats.config.url + '/' + id,
+      type: 'DELETE',
+      success: function (data) {
+       console.log(data);
+       chats.renderChat();
+      },
+      error: function (err) {
+       console.log(err);
+      }
+    });
+ }//end delete for matching userId values
+ else{
+   alert("You cannot delete other user messages")
+ }
+ }
 
 };//end chats methods

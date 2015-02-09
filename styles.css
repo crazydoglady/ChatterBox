@@ -94,9 +94,9 @@ aside {
   display: inline-block; }
 
 .chatbox {
-  margin: 0 0 0 10%;
+  margin: 0 0 0 0;
   background: white;
-  width: 75%;
+  width: 100%;
   max-height: 500px;
   overflow: scroll;
   display: none;
@@ -109,6 +109,9 @@ form {
     display: inline-block;
     width: 90%;
     margin: 1% 0 1% 1%; }
+
+.sendMessage {
+  display: none; }
 
 .logout {
   font-size: 20px;
@@ -131,6 +134,10 @@ form {
     display: inline-block;
     background: #e53d3d;
     color: black; }
+
+.fa .fa-minus {
+  float: right;
+  color: #e53d3d; }
 
 .show {
   display: inline-block; }
