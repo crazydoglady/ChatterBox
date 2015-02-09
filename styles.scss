@@ -149,15 +149,19 @@ form{
   font-family: $droid;
   font-size: 20px;
   display: none;
+  background: $darkred;
+  margin: 0 0 5px 0;
 }
 .userId {
   display: none;
 }
 
+
 #create {
   margin: 0 0 2% 0;
   input{
     display: inline-block;
+    width: 
   }
   button {
     margin: 0% 0 0% 2%;
@@ -167,10 +171,8 @@ form{
   }
 }
 
-  i {
-  float: right;
-  color: black;
-  margin: 0 0 5px 0;
+.fa .fa-sign-out{
+  margin: 0 0 2px 0;
 }
 .show {
   display: inline-block;

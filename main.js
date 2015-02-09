@@ -23,9 +23,15 @@ var chats = {
     $('.userDisplay').on('click', function(event){
       event.preventDefault();
       $('.changeUser').addClass('show');
-      // $('.chatbox').html(); //this clears html content....why added?
-      chats.editUser();
+      $('.chatbox').html();
     });//end submit userId
+
+    $('.changeUser').on('submit', function(event){
+      event.preventDefault();
+      $('.changeUser').removeClass('show');
+      chats.editUser();
+    });
+
 
     //on click of send msg button trigger these events
     $('#create').on('submit', function(event){
@@ -38,21 +44,7 @@ var chats = {
 
     });//end submit event for .sendMessage button
 
-    // $('.editUser').on('click', function(event){
-    //   event.preventDefault();
-    //   $('.userEdit').addClass('show');
-    //   $(this).find('.userDisplay').toggleClass('show');
-    // });
-    //
-    //
-    // $('').on('submit', '#showUserEdit', function(event){
-    //   event.preventDefault();
-    //   var user = localStorage.userId;
-    //   var editedUser = {};
-    //
-    //   chats.editUser();
-    //
-    // });//end edit user event
+
     $('article').on('click', '.deleteMsg', function(event){
       event.preventDefault();
       var msgId = $(this).closest('article').data('chatid');
@@ -76,9 +68,7 @@ var chats = {
   //   $el.prepend(template);
   // },
   renderChat: function(){
-    var login = localStorage.userId;
-    console.log(login);
-    if (login == null) {
+    if (!localStorage.userId) {
       $('.chatbox').removeClass('show');
       $('.create').removeClass('show');
       $('.logout').removeClass('show');
@@ -86,6 +76,21 @@ var chats = {
       $('.editUser').hide();
       $('.userDisplay').removeClass('show');
     } else {
+      $.ajax({
+        url: chats.config.url,
+        type: 'GET',
+        success: function(chats) { //passes info through function and it is added into empty string
+          var template= _.template($('#chatTmpl').html());
+          var markup = "";
+          chats.forEach(function(item, idx, arr){
+            markup +=template(item);
+          });//end forEach
+          $('article').html(markup);
+        },
+        error: function(err) {
+          console.log(err, "render error");
+        }
+      });//end ajax for render
       $('.userDisplay').addClass('show');
       $('.userDisplay').html(localStorage.userId);
       $('.chatbox').addClass('show');
@@ -96,21 +101,7 @@ var chats = {
       $('.usersList').addClass('show');
       $('.sendMessage').addClass('show');
     }
-    $.ajax({
-      url: chats.config.url,
-      type: 'GET',
-      success: function(chats) { //passes info through function and it is added into empty string
-        var template= _.template($('#chatTmpl').html());
-        var markup = "";
-        chats.forEach(function(item, idx, arr){
-          markup +=template(item);
-        });//end forEach
-        $('article').html(markup);
-      },
-      error: function(err) {
-        console.log(err, "render error");
-      }
-    });//end ajax for render
+
   },
   createMessage: function(message) {
     $.ajax({
@@ -128,7 +119,6 @@ var chats = {
     });//end createMessage ajax
 
   },
-
   createUser: function() {
     var userName = $('#userInput').val();
     localStorage.setItem( 'userId', userName);
@@ -151,21 +141,7 @@ var chats = {
 
     chats.renderChat();
 },
-// editUser: function (id, name) {
-//   $.ajax({
-//     userName: userId,
-//     data: message,
-//     type: 'PUT',
-//     success: function(newId) {
-//      console.log(newId);
-//      chats.renderChat();
-//   },
-//     error: function(err){
-//
-//     }
-//   });
-//
-// }
+
 deleteMessage: function (id, user) {
   console.log(user, "currentUser");
   console.log(localStorage.userId ,"localStorage.userId");
@@ -188,7 +164,23 @@ deleteMessage: function (id, user) {
  }
 }
 
+};//end chats methods
 
+// editUser: function (id, name) {
+//   $.ajax({
+//     userName: userId,
+//     data: message,
+//     type: 'PUT',
+//     success: function(newId) {
+//      console.log(newId);
+//      chats.renderChat();
+//   },
+//     error: function(err){
+//
+//     }
+//   });
+//
+// }
 //  }
   // editName: function (id, name) {
   //   $.ajax({
@@ -204,5 +196,3 @@ deleteMessage: function (id, user) {
   //   });
   //
   // }
-
-};//end chats methods

@@ -127,10 +127,16 @@ form {
 .userDisplay {
   font-family: 'Droid Serif', serif;
   font-size: 20px;
-  display: none; }
+  display: none;
+  background: #B22222;
+  margin: 0 0 5px 0; }
 
 .userId {
   display: none; }
+
+.writeMessage {
+  width: 90%;
+  margin: 0 0 0 5px; }
 
 #create {
   margin: 0 0 2% 0; }
@@ -142,10 +148,8 @@ form {
     background: #e53d3d;
     color: black; }
 
-i {
-  float: right;
-  color: black;
-  margin: 0 0 5px 0; }
+.fa .fa-sign-out {
+  margin: 0 0 2px 0; }
 
 .show {
   display: inline-block; }
