@@ -122,9 +122,9 @@ form {
     background: #e53d3d;
     display: inline-block; }
 
-.userId {
-  display: none; }
-
+/* .userId {
+  display: none;
+} */
 #create {
   margin: 0 0 2% 0; }
   #create input {

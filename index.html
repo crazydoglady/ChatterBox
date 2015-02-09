@@ -24,6 +24,10 @@
   </div>
   <button action="submit">Create</button>
 </form>
+<form action="" class="editUser">
+  <input type="text" id="edituserInput" placeholder="What's your new Username?">
+  <button action="submit">Edit Username</button>
+</form>
 <aside class="usersList">
   <ul>
     <li></li>
@@ -45,12 +49,32 @@
       <input type="text" name="message" placeholder="Type message here">
       <button action="submit" name="send">Send</button>
     </div>
+      <aside class="usersList">
+        <ul>
+          <li></li>
+        </ul>
+      </aside>
 
-</div><!--end wrapper-->
+    <div class="chatbox show">
+      <form action="" class="logout show">
+        <div id="userDisplay"></div>
+        <button action="submit"><i class="fa fa-times"></i> LOGOUT </button>
+      </form>
+      <article>
+      </article>
+      <form id = "create" action="">
+        <div class="message">
+          <input type="text" name="message" placeholder="Type message here">
+          <button action="submit" name="send">Send</button>
+        </div>
+      </form>
+    </div>
+
+  </div><!--end wrapper-->
 
 
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/underscore/underscore.js"></script>
-<script src="main.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
